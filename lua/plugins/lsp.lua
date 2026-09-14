@@ -29,10 +29,6 @@ return { -- <-- Make sure "return" is right here on line 1!
       -- 2. Define standard shared settings (Instantly load colors, connect capabilities)
       local shared_config = {
         capabilities = capabilities,
-        on_attach = function(client, bufnr)
-          -- Turn off delayed semantic highlights so colors load instantly
-          client.server_capabilities.semanticTokensProvider = nil
-        end,
       }
 
       -- 3. Register your engines using the shared configuration
