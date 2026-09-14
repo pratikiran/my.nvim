@@ -16,12 +16,28 @@ return { -- <-- Make sure "return" is right here on line 1!
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
+    dependencies = { 
+      "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp", -- Connected to your autocomplete engine
+    },
     config = function()
       local lsp = vim.lsp.config
 
-      lsp("gopls", {})
-      lsp("ts_ls", {})
+      -- 1. Grab autocomplete capabilities from cmp
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      -- 2. Define standard shared settings (Instantly load colors, connect capabilities)
+      local shared_config = {
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          -- Turn off delayed semantic highlights so colors load instantly
+          client.server_capabilities.semanticTokensProvider = nil
+        end,
+      }
+
+      -- 3. Register your engines using the shared configuration
+      lsp("gopls", shared_config)
+      lsp("ts_ls", shared_config)
 
       -- CRITICAL STEP: Explicitly command Neovim to turn on your engines
       vim.lsp.enable({ "gopls", "ts_ls" })
