@@ -2,7 +2,6 @@
 
 A clean, high-performance IDE environment built with **Neovim v0.11+** and **Lazy.nvim**. Styled to perfectly match the VS Code Dark Modern theme and optimized for **Go** and **JavaScript/TypeScript** development.
 
----
 
 ## 📋 System Prerequisites
 
@@ -74,4 +73,5 @@ nvim
 * **`Shift + j`** (in Normal mode): Move selection down.
 * **`Shift + k`** (in Normal mode): Move selection up.
 * **`Enter`**: Open the targeted file target.
+
 
