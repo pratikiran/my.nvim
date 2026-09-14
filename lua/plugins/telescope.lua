@@ -14,7 +14,7 @@ return {
           theme = "ivy", 
         },
       })
-
+      
       -- Load the fast native sorting extension
       telescope.load_extension("fzf")
 
